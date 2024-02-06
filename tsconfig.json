@@ -23,7 +23,7 @@
   },
   "include": ["src", "packages"],
   "references": [
-    { "path": "./packages/idea" },
+    { "path": "./packages/idea-0" },
     { "path": "./tsconfig.node.json" }
   ]
 }
