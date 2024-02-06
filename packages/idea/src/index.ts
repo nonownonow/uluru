@@ -1,3 +1,3 @@
 export function test() {
-  console.log("test vite");
+  console.log("sa");
 }
