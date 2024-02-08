@@ -1,11 +1,19 @@
 {
   "name": "@uluru/idea-0",
   "version": "1.0.0",
-  "main": "build/index.js",
-  "devDependencies": {},
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/idea.umd.cjs",
+  "module": "./dist/idea.js",
+  "exports": {
+    ".": {
+      "import": "./dist/idea.js",
+      "require": "./dist/idea.umd.cjs"
+    }
+  },
   "scripts": {
-    "build": "tsc --build",
-    "test": "vitest"
+    "build": "vite build"
   },
   "keywords": [],
   "author": "",
