@@ -37,7 +37,3 @@ export const VALUE = forwardRef(function VALUE<T extends keyof HTMLElements>(
   const { Root, ...restProps } = props;
   return <Root ref={ref} {...restProps} />;
 });
-
-function test() {
-  return <VALUE<"div"> Root="div" $value="test" $valueLabel="test" />;
-}
