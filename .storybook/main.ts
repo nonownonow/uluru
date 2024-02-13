@@ -1,14 +1,15 @@
-/** @type { import('@storybook/react-vite').StorybookConfig } */
 const config = {
   stories: [
     "../packages/**/*.mdx",
-    "../packages/idea-0/src/*.stories.@(js|jsx|mjs|ts|tsx)",
+    "../packages/idea-0/src/**/*.stories.@(js|jsx|mjs|ts|tsx)",
   ],
   addons: [
     "@storybook/addon-links",
     "@storybook/addon-essentials",
     "@storybook/addon-onboarding",
     "@storybook/addon-interactions",
+    "@whitespace/storybook-addon-html",
+    "@storybook/addon-mdx-gfm",
   ],
   framework: {
     name: "@storybook/react-vite",

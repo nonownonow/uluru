@@ -4,36 +4,41 @@ declare module "react" {
   ): (props: P & React.RefAttributes<T>) => React.ReactNode | null;
 }
 type HTMLElements = HTMLElementTagNameMap & HTMLElementDeprecatedTagNameMap;
-type IntrinsicHTMLElements = {
-  [K in keyof JSX.IntrinsicElements]: K extends keyof HTMLElements
-    ? JSX.IntrinsicElements[K]
-    : never;
-};
-import React from "react";
-import {
-  FC,
-  ReactNode,
-  forwardRef,
-  ForwardedRef,
-  ComponentPropsWithRef,
-} from "react";
+import React, { ElementType } from "react";
+import { ReactNode, forwardRef, ForwardedRef } from "react";
+import { html, identity } from "../util/util";
 
-export type $VALUE = {
-  $value: string | number | boolean;
-  $valueLabel: ReactNode;
-};
+export type Primitive = string | number | boolean;
+export interface $VALUE {
+  /**
+   * 값
+   **/
+  $value: Primitive;
+  /**
+   * 값에 포멧을 적용하는 함수
+   **/
+  $valueLabel?: (value: Primitive, key?: string, index?: number) => ReactNode;
+  children?: ReactNode;
+}
 
 export interface VALUECallback {
-  Root:
-    | string
-    | FC<$VALUE & ComponentPropsWithRef<keyof IntrinsicHTMLElements>>;
+  Root: ElementType;
 }
 export type VALUEProps = $VALUE & VALUECallback;
 
+/**
+ * 엔트리의 구조를 구현한 고차 컴포넌트
+ **/
 export const VALUE = forwardRef(function VALUE<T extends keyof HTMLElements>(
   props: VALUEProps,
   ref: ForwardedRef<HTMLElements[T]>,
 ) {
-  const { Root, ...restProps } = props;
-  return <Root ref={ref} {...restProps} />;
+  const { Root, $value, $valueLabel = identity } = props;
+  return (
+    <Root
+      data-idea-value={props.$valueLabel ? $value : ""}
+      {...html($valueLabel($value))}
+      ref={ref}
+    />
+  );
 });

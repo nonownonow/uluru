@@ -8,6 +8,9 @@ const preview = {
         date: /Date$/i,
       },
     },
+    html: {
+      transform: (code) => code.replace(/data-testid=".+?"/g, ""),
+    },
   },
 };
 
