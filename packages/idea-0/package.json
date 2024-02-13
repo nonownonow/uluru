@@ -22,7 +22,6 @@
     "postbuild-storybook": "cp docs/index.html docs/404.html && touch docs/.nojekyll"
   },
   "keywords": [],
-  "homepage": "https://nonownonow.github.io/idea-0",
   "author": "",
   "license": "ISC",
   "description": ""
