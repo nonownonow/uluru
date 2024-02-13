@@ -15,14 +15,16 @@
   "scripts": {
     "build": "vite build",
     "test": "vitest",
+    "build-storybook": "storybook build",
     "predeploy": "npm run build-storybook",
     "deploy": "gh-pages -d storybook-static",
-    "postbuild": "cp storybook-static/index.html storybook-static/404.html"
+    "postbuild-storybook": "cp storybook-static/index.html storybook-static/404.html"
   },
   "devDependencies": {
     "gh-pages": "^3.2.3"
   },
   "keywords": [],
+  "homepage": "https://uluru.github.io/idea-0/",
   "author": "",
   "license": "ISC",
   "description": ""
