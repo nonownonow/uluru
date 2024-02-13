@@ -18,6 +18,7 @@
     "packages/*"
   ],
   "devDependencies": {
+    "gh-pages": "^3.2.3",
     "@storybook/addon-essentials": "^7.6.12",
     "@storybook/addon-interactions": "^7.6.12",
     "@storybook/addon-links": "^7.6.12",

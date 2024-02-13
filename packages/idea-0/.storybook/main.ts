@@ -1,19 +1,6 @@
-const config = {
-  stories: ["../src/**/*.mdx", "../src/**/*.stories.@(js|jsx|mjs|ts|tsx)"],
-  addons: [
-    "@storybook/addon-links",
-    "@storybook/addon-essentials",
-    "@storybook/addon-onboarding",
-    "@storybook/addon-interactions",
-    "@whitespace/storybook-addon-html",
-    "@storybook/addon-mdx-gfm",
-  ],
-  framework: {
-    name: "@storybook/react-vite",
-    options: {},
-  },
-  docs: {
-    autodocs: "tag",
-  },
-};
+import config from "../../../.storybook/main";
+config.stories = [
+  "../src/**/*.mdx",
+  "../src/**/*.stories.@(js|jsx|mjs|ts|tsx)",
+];
 export default config;
