@@ -1,1 +1,0 @@
-const a={parameters:{actions:{argTypesRegex:"^on[A-Z].*"},controls:{matchers:{color:/(background|color)$/i,date:/Date$/i}},html:{transform:e=>e.replace(/data-testid=".+?"/g,"")}}};export{a as default};
