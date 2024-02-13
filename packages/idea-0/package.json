@@ -20,7 +20,7 @@
     "test": "vitest",
     "build-storybook": "storybook build",
     "predeploy": "npm run build-storybook",
-    "deploy": "gh-pages -d storybook-static -b gh-pages --remote idea-0",
+    "deploy": "gh-pages -d storybook-static",
     "postbuild-storybook": "cp storybook-static/index.html storybook-static/404.html && cp .storybook/.nojekyll storybook-static/.nojekyll"
   },
   "keywords": [],
