@@ -1,6 +1,5 @@
 import { describe, expect, test } from "vitest";
 import { html, identity } from "./util";
-import React from "react";
 
 describe("htmlChildren", () => {
   test("문자열 html 을 dangerouslySetInnerHTML prop 로 만든다", () => {

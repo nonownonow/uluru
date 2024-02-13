@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { VALUE } from "./Value";
+import { VALUE } from "./VALUE";
 
 const meta = {
   component: VALUE,
@@ -27,6 +27,6 @@ export const WithLabel: Story = {
   args: {
     Root: "h1",
     $value: "Hello <em>world</em>",
-    $valueLabel: (a) => `My ${a}`,
+    $valueFormat: (a) => `My ${a}`,
   },
 };
