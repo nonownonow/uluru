@@ -13,6 +13,20 @@ export const Default: Story = {
   args: {
     Root: "h1",
     $value: "Hello <em>world</em>",
+  },
+};
+
+export const Polymorphic: Story = {
+  args: {
+    Root: "p",
+    $value: "Hello <em>world</em>",
+  },
+};
+
+export const WithLabel: Story = {
+  args: {
+    Root: "h1",
+    $value: "Hello <em>world</em>",
     $valueLabel: (a) => `My ${a}`,
   },
 };
