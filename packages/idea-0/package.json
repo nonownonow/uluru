@@ -18,7 +18,7 @@
     "build-storybook": "storybook build",
     "predeploy": "npm run build-storybook",
     "deploy": "gh-pages -d storybook-static -b gh-pages --remote idea-0",
-    "postbuild-storybook": "cp storybook-static/index.html storybook-static/404.html && touch storybook-static/.nojekyll"
+    "postbuild-storybook": "cp storybook-static/index.html storybook-static/404.html && cp ./.storybook/.nojekyll storybook-static/.nojekyll"
   },
   "keywords": [],
   "homepage": "https://nonownonow.github.io/idea-0",
