@@ -1,6 +1,6 @@
 declare module "react" {
   function forwardRef<T, P = object>(
-    render: (props: P, ref: React.Ref<T>) => React.ReactNode | null,
+    render: (props: P, ref: React.Ref<T>) => React.ReactNode | null
   ): (props: P & React.RefAttributes<T>) => React.ReactNode | null;
 }
 type HTMLElements = HTMLElementTagNameMap & HTMLElementDeprecatedTagNameMap;
@@ -12,7 +12,7 @@ import { Primitive } from "~/type/type";
 export type Formatter<T extends Primitive> = (
   value: T,
   key?: string,
-  index?: number,
+  index?: number
 ) => ReactNode;
 export interface $VALUE<T extends Primitive> {
   /**
@@ -36,7 +36,7 @@ export type VALUEProps<T extends Primitive> = $VALUE<T> & VALUECallback;
  **/
 export const VALUE = forwardRef(function VALUE<
   T extends keyof HTMLElements,
-  V extends Primitive,
+  V extends Primitive
 >(props: VALUEProps<V>, ref: ForwardedRef<HTMLElements[T]>) {
   const { Root, $value, $valueFormat = identity } = props;
   return (

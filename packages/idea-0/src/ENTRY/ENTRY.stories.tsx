@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { VALUE } from "./VALUE2";
+import { ENTRY } from "./ENTRY";
 
 const meta = {
-  component: VALUE,
+  component: ENTRY,
   tags: ["autodocs"],
-} satisfies Meta<typeof VALUE>;
+} satisfies Meta<typeof ENTRY>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
@@ -30,3 +30,4 @@ export const WithLabel: Story = {
     $valueFormat: (a) => `My ${a}`,
   },
 };
+

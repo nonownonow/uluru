@@ -1,7 +1,13 @@
 const config = {
   stories: [
-    "../packages/**/*.mdx",
-    "../packages/idea-0/src/**/*.stories.@(js|jsx|mjs|ts|tsx)",
+    {
+      directory: "../packages",
+      files: "**/*.stories.@(js|jsx|ts|tsx)",
+    },
+    {
+      directory: "../packages",
+      files: "**/*.mdx",
+    },
   ],
   addons: [
     "@storybook/addon-links",
