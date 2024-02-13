@@ -17,7 +17,7 @@
     "test": "vitest",
     "build-storybook": "storybook build",
     "predeploy": "npm run build-storybook",
-    "deploy": "gh-pages -d storybook-static",
+    "deploy": "gh-pages -d storybook-static -b gh-pages --remote idea-0",
     "postbuild-storybook": "cp storybook-static/index.html storybook-static/404.html"
   },
   "devDependencies": {
