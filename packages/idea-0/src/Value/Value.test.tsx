@@ -1,6 +1,6 @@
 import { render } from "@testing-library/react";
 import { expect, test, describe } from "vitest";
-import { VALUE } from "./VALUE2";
+import { VALUE } from "./VALUE";
 import { Default, Polymorphic, WithLabel } from "./VALUE.stories";
 describe("VALUE", () => {
   test("default", () => {
