@@ -11,21 +11,21 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    Root: "h1",
+    Value: "h1",
     $value: "Hello <em>world</em>",
   },
 };
 
 export const Polymorphic: Story = {
   args: {
-    Root: "p",
+    Value: "p",
     $value: "Hello <em>world</em>",
   },
 };
 
 export const WithLabel: Story = {
   args: {
-    Root: "h1",
+    Value: "h1",
     $value: "Hello <em>world</em>",
     $valueFormat: (a) => `My ${a}`,
   },

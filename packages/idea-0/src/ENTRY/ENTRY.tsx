@@ -1,5 +1,5 @@
-import { ElementType } from "react";
-import { Formatter, Primitive } from "~/type/type";
+import { ComponentPropsWithRef, ElementType, PropsWithChildren } from "react";
+import { Formatter, Primitive } from "~/types/type";
 import { html, identity } from "..";
 
 export type EntryData = [string, Primitive];
@@ -42,3 +42,11 @@ export const ENTRY = function ENTRY<E extends EntryData>(props: ENTRYProps<E>) {
     </Root>
   );
 };
+export type PolymorphicComponentProps<
+  C extends ElementType,
+  P extends object
+> = PropsWithChildren<Omit<ComponentPropsWithRef<C>, keyof P> & P>;
+
+export type PolymorphicRef<C extends ElementType> = ComponentPropsWithRef<
+  C
+>["ref"];

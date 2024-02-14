@@ -1,44 +1,36 @@
-declare module "react" {
-  function forwardRef<T, P = object>(
-    render: (props: P, ref: React.Ref<T>) => React.ReactNode | null
-  ): (props: P & React.RefAttributes<T>) => React.ReactNode | null;
-}
-type HTMLElements = HTMLElementTagNameMap & HTMLElementDeprecatedTagNameMap;
-import { ElementType } from "react";
-import { ReactNode, forwardRef, ForwardedRef } from "react";
+import type { ElementType } from "react";
+import { forwardRef } from "react";
 import { html, identity } from "../util/util";
-import { Primitive, Formatter } from "~/type/type";
+import { Formatter, Primitive } from "~/types/type";
+import type { PolymorphicComponentProps, PolymorphicRef } from "~/types/type";
 
-export interface $VALUE<T extends Primitive> {
+export type VALUE<D extends Primitive> = {
   /**
    * 값으로 사용될 데이터 [(타입상세)](/?path=/docs/type--docs#primitive)
    **/
-  $value: T;
+  $value: D;
   /**
    * 값에 포멧을 적용하는 함수 [(타입상세)](/?path=/docs/type--docs#formatter)
    **/
-  $valueFormat?: Formatter<T>;
-  children?: ReactNode;
-}
+  $valueFormat?: Formatter<D>;
+};
 
-export interface VALUECallback {
-  Root: ElementType;
-}
-export type VALUEProps<T extends Primitive> = $VALUE<T> & VALUECallback;
+export type VALUECallback<Value extends ElementType> = {
+  Value?: Value;
+};
+
+export type VALUEProps<
+  C extends ElementType = "div",
+  D extends Primitive = string
+> = PolymorphicComponentProps<C, VALUE<D> & VALUECallback<C>>;
 
 /**
  * 값의 구조를 구현한 고차 컴포넌트
  **/
 export const VALUE = forwardRef(function VALUE<
-  T extends keyof HTMLElements,
-  V extends Primitive
->(props: VALUEProps<V>, ref: ForwardedRef<HTMLElements[T]>) {
-  const { Root, $value, $valueFormat = identity } = props;
-  return (
-    <Root
-      data-idea-value={props.$valueFormat ? $value : ""}
-      {...html($valueFormat($value))}
-      ref={ref}
-    />
-  );
+  C extends ElementType,
+  D extends Primitive
+>(props: VALUEProps<C, D>, ref: PolymorphicRef<C>) {
+  const { Value = "div", $value, $valueFormat = identity } = props;
+  return <Value data-idea-value="" {...html($valueFormat($value))} ref={ref} />;
 });

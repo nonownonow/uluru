@@ -1,10 +1,10 @@
 import { render } from "@testing-library/react";
 import { expect, test, describe } from "vitest";
-import { VALUE } from "./VALUE";
+import { VALUE, VALUEProps } from "./VALUE";
 import { Default, Polymorphic, WithLabel } from "./VALUE.stories";
 describe("VALUE", () => {
   test("default", () => {
-    const { asFragment } = render(<VALUE {...Default.args} />);
+    const { asFragment } = render(<VALUE {...(Default.args as VALUEProps)} />);
     expect(asFragment()).toMatchInlineSnapshot(`
     <DocumentFragment>
       <h1
@@ -19,7 +19,9 @@ describe("VALUE", () => {
   `);
   });
   test("polymorphic", () => {
-    const { asFragment } = render(<VALUE {...Polymorphic.args} />);
+    const { asFragment } = render(
+      <VALUE {...(Polymorphic.args as VALUEProps)} />
+    );
     expect(asFragment()).toMatchInlineSnapshot(`
       <DocumentFragment>
         <p
@@ -34,11 +36,13 @@ describe("VALUE", () => {
     `);
   });
   test("withValueFormat", () => {
-    const { asFragment } = render(<VALUE {...WithLabel.args} />);
+    const { asFragment } = render(
+      <VALUE {...(WithLabel.args as VALUEProps)} />
+    );
     expect(asFragment()).toMatchInlineSnapshot(`
       <DocumentFragment>
         <h1
-          data-idea-value="Hello <em>world</em>"
+          data-idea-value=""
         >
           My Hello 
           <em>
