@@ -18,8 +18,10 @@
   "scripts": {
     "build": "vite build",
     "test": "vitest",
-    "build-storybook": "storybook build -o docs",
-    "postbuild-storybook": "cp docs/index.html docs/404.html && touch docs/.nojekyll"
+    "build-storybook": "storybook build",
+    "predeploy": "npm run build-storybook",
+    "deploy": "gh-pages -d storybook-static -t -o idea-0 -b gh-pages",
+    "postbuild-storybook": "cp storybook-static/index.html storybook-static/404.html && touch storybook-static/.nojekyll"
   },
   "keywords": [],
   "homepage": "https://nonownonow.github.io/idea-0",

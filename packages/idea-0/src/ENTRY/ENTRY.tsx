@@ -16,5 +16,5 @@ export interface $ENTRY {
 }
 
 export const ENTRY = function ENTRY() {
-  return <div>ENTRY</div>;
+  return <div>ENTRY3</div>;
 };
