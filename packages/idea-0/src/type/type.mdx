@@ -1,10 +1,21 @@
 import { Meta } from "@storybook/blocks";
 
-<Meta title="type" />
+<Meta title="type" />;
 
 # iDea에서 사용되는 타입을 설명하는 문서입니다.
 
 ## Primitive
 
-- value의 값을 표현하는 타입
-- type Primitive = string | number | boolean;
+```
+type Primitive = string | number | boolean;
+```
+
+## Formatter
+
+```typescript
+type Formatter<T extends Primitive> = (
+  value: T,
+  key?: string,
+  index?: number
+) => ReactNode;
+```

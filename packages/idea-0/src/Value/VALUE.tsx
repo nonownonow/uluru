@@ -7,20 +7,15 @@ type HTMLElements = HTMLElementTagNameMap & HTMLElementDeprecatedTagNameMap;
 import { ElementType } from "react";
 import { ReactNode, forwardRef, ForwardedRef } from "react";
 import { html, identity } from "../util/util";
-import { Primitive } from "~/type/type";
+import { Primitive, Formatter } from "~/type/type";
 
-export type Formatter<T extends Primitive> = (
-  value: T,
-  key?: string,
-  index?: number
-) => ReactNode;
 export interface $VALUE<T extends Primitive> {
   /**
-   * 값
+   * 값으로 사용될 데이터 [(타입상세)](/?path=/docs/type--docs#primitive)
    **/
   $value: T;
   /**
-   * 값에 포멧을 적용하는 함수
+   * 값에 포멧을 적용하는 함수 [(타입상세)](/?path=/docs/type--docs#formatter)
    **/
   $valueFormat?: Formatter<T>;
   children?: ReactNode;
@@ -32,7 +27,7 @@ export interface VALUECallback {
 export type VALUEProps<T extends Primitive> = $VALUE<T> & VALUECallback;
 
 /**
- * 엔트리의 구조를 구현한 고차 컴포넌트
+ * 값의 구조를 구현한 고차 컴포넌트
  **/
 export const VALUE = forwardRef(function VALUE<
   T extends keyof HTMLElements,

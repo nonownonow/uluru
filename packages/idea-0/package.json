@@ -17,6 +17,7 @@
   },
   "scripts": {
     "build": "vite build",
+    "storybook": "storybook dev -p 6006",
     "test": "vitest",
     "build-storybook": "storybook build",
     "predeploy": "npm run build-storybook",
