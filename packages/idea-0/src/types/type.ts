@@ -1,13 +1,14 @@
 import type {
   ComponentPropsWithRef,
+  ComponentPropsWithoutRef,
   ElementType,
   PropsWithChildren,
   ReactNode,
 } from "react";
 
-export type Primitive = string | number | boolean;
+export type ValueData = string | number | boolean;
 
-export type Formatter<T extends Primitive> = (
+export type Formatter<T extends ValueData> = (
   value: T,
   key?: string,
   index?: number
@@ -16,8 +17,8 @@ export type Formatter<T extends Primitive> = (
 export type PolymorphicComponentProps<
   C extends ElementType,
   P extends object
-> = PropsWithChildren<Omit<ComponentPropsWithRef<C>, keyof P> & P>;
+> = PropsWithChildren<Omit<ComponentPropsWithoutRef<C>, keyof P> & P>;
 
-export type PolymorphicRef<C extends ElementType> = ComponentPropsWithRef<
-  C
->["ref"];
+export type PolymorphicRef<C extends ElementType> =
+  ComponentPropsWithRef<C>["ref"];
+export type EntryData = [string, ValueData];

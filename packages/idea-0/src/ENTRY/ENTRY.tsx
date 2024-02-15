@@ -1,44 +1,65 @@
-import { ElementType } from "react";
-import { Formatter, Primitive } from "~/types/type";
-import { html, identity } from "..";
+import { ElementType, forwardRef } from "react";
+import {
+  Formatter,
+  PolymorphicComponentProps,
+  PolymorphicRef,
+} from "~/types/type";
+import { VALUE } from "~/VALUE/VALUE";
+import { identity } from "~/util/util";
+import { EntryData } from "~/types/type";
 
-export type EntryData = [string, Primitive];
-export type ENTRYProps<T extends EntryData> = $ENTRY<T> & $ENTRYCallback;
-export interface $ENTRY<E extends EntryData> {
-  /**
-   * 엔트리 형태 = [key, value]
-   * */
-  $entry: E;
-  /**
-   * 키의 포멧을 적용하는 함수
-   * */
-  $keyFormat?: Formatter<E[0]>;
-  /**
-   * 값의 포멧을 적용하는 함수
-   * */
-  $valueFormat?: Formatter<E[1]>;
+export interface $ENTRY<D extends EntryData> {
+  $entry: D;
+  $keyFormat?: Formatter<D[0]>;
+  $valueFormat?: Formatter<D[1]>;
 }
-export interface $ENTRYCallback {
-  Root?: ElementType;
-  Key?: ElementType;
-  Value?: ElementType;
+interface $ENTRYCallback<
+  Entry extends ElementType = "div",
+  Key extends ElementType = "div",
+  Value extends ElementType = "div"
+> {
+  Entry?: Entry;
+  Key?: Key;
+  Value?: Value;
 }
+type ENTRYProps<
+  D extends EntryData,
+  E extends ElementType,
+  K extends ElementType,
+  V extends ElementType
+> = PolymorphicComponentProps<E, $ENTRY<D> & $ENTRYCallback<E, K, V>>;
+
 /**
- * 의 구조를 구현한 고차 컴포넌트
+ * ENTRY 구조를 구현한 고차 컴포넌트
  **/
-export const ENTRY = function ENTRY<E extends EntryData>(props: ENTRYProps<E>) {
+export const ENTRY = forwardRef(function ENTRY<
+  D extends EntryData,
+  E extends ElementType = "div",
+  K extends ElementType = "div",
+  V extends ElementType = "div"
+>(props: ENTRYProps<D, E, K, V>, ref: PolymorphicRef<E>) {
   const {
-    Root = "div",
-    Key = "div",
-    Value = "div",
-    $entry,
+    $entry: [key, value],
+    Entry = "div",
+    Key = "div" as ElementType,
+    Value = "div" as ElementType,
     $keyFormat = identity,
     $valueFormat = identity,
   } = props;
   return (
-    <Root data-idea-entry="">
-      <Key data-idea-key="" {...html($keyFormat($entry[0]))} />
-      <Value data-idea-value="" {...html($valueFormat($entry[1]))} />
-    </Root>
+    <Entry data-idea-entry={key} ref={ref}>
+      <VALUE
+        data-idea-key={key}
+        Value={Key}
+        $value={key}
+        $valueFormat={$keyFormat}
+      />
+      <VALUE
+        data-idea-value={key}
+        Value={Value}
+        $value={value}
+        $valueFormat={$valueFormat}
+      />
+    </Entry>
   );
-};
+});

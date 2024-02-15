@@ -9,15 +9,16 @@ describe("ENTRY", () => {
     expect(asFragment()).toMatchInlineSnapshot(`
       <DocumentFragment>
         <div
-          data-idea-entry=""
+          data-idea-entry="key"
         >
           <div
-            data-idea-key=""
+            data-idea-key="key"
+            data-idea-value=""
           >
             key
           </div>
           <div
-            data-idea-value=""
+            data-idea-value="key"
           >
             value
           </div>

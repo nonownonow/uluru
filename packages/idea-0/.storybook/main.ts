@@ -1,5 +1,4 @@
 import remarkGfm from "remark-gfm";
-
 const config = {
   stories: ["../src/**/*.mdx", "../src/**/*.stories.@(js|jsx|mjs|ts|tsx)"],
   addons: [

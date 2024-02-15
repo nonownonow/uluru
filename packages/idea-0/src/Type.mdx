@@ -1,19 +1,25 @@
 import { Meta } from "@storybook/blocks";
 
-<Meta title="type" />;
+<Meta />
 
 # iDea에서 사용되는 타입을 설명하는 문서입니다.
 
-## Primitive
+## ValueData
 
+```typescript
+type ValueData = string | number | boolean;
 ```
-type Primitive = string | number | boolean;
+
+## EntryData
+
+```typescript
+type EntryData = [string, ValueData];
 ```
 
 ## Formatter
 
 ```typescript
-type Formatter<T extends Primitive> = (
+type Formatter<T extends ValueData> = (
   value: T,
   key?: string,
   index?: number
