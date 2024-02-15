@@ -4,6 +4,7 @@
   "files": [
     "dist"
   ],
+  "type": "module",
   "main": "./dist/idea.umd.cjs",
   "module": "./dist/idea.js",
   "exports": {
@@ -28,5 +29,8 @@
   "homepage": "https://nonownonow.github.io/idea-0",
   "author": "",
   "license": "ISC",
-  "description": ""
+  "description": "",
+  "dependencies": {
+    "@fxts/core": "^0.23.0"
+  }
 }

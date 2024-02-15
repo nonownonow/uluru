@@ -1,3 +1,5 @@
+import remarkGfm from "remark-gfm";
+
 const config = {
   stories: ["../src/**/*.mdx", "../src/**/*.stories.@(js|jsx|mjs|ts|tsx)"],
   addons: [
@@ -6,7 +8,16 @@ const config = {
     "@storybook/addon-onboarding",
     "@storybook/addon-interactions",
     "@whitespace/storybook-addon-html",
-    "@storybook/addon-mdx-gfm",
+    {
+      name: "@storybook/addon-docs",
+      options: {
+        mdxPluginOptions: {
+          mdxCompileOptions: {
+            remarkPlugins: [remarkGfm],
+          },
+        },
+      },
+    },
   ],
   framework: {
     name: "@storybook/react-vite",

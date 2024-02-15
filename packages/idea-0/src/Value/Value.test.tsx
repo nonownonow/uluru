@@ -6,17 +6,17 @@ describe("VALUE", () => {
   test("default", () => {
     const { asFragment } = render(<VALUE {...(Default.args as VALUEProps)} />);
     expect(asFragment()).toMatchInlineSnapshot(`
-    <DocumentFragment>
-      <h1
-        data-idea-value=""
-      >
-        Hello 
-        <em>
-          world
-        </em>
-      </h1>
-    </DocumentFragment>
-  `);
+      <DocumentFragment>
+        <div
+          data-idea-value=""
+        >
+          Hello 
+          <em>
+            world
+          </em>
+        </div>
+      </DocumentFragment>
+    `);
   });
   test("polymorphic", () => {
     const { asFragment } = render(
@@ -24,14 +24,14 @@ describe("VALUE", () => {
     );
     expect(asFragment()).toMatchInlineSnapshot(`
       <DocumentFragment>
-        <p
+        <div
           data-idea-value=""
         >
           Hello 
           <em>
             world
           </em>
-        </p>
+        </div>
       </DocumentFragment>
     `);
   });
@@ -41,14 +41,14 @@ describe("VALUE", () => {
     );
     expect(asFragment()).toMatchInlineSnapshot(`
       <DocumentFragment>
-        <h1
+        <div
           data-idea-value=""
         >
           My Hello 
           <em>
             world
           </em>
-        </h1>
+        </div>
       </DocumentFragment>
     `);
   });

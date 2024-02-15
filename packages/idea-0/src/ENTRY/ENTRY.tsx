@@ -1,4 +1,4 @@
-import { ComponentPropsWithRef, ElementType, PropsWithChildren } from "react";
+import { ElementType } from "react";
 import { Formatter, Primitive } from "~/types/type";
 import { html, identity } from "..";
 
@@ -42,11 +42,3 @@ export const ENTRY = function ENTRY<E extends EntryData>(props: ENTRYProps<E>) {
     </Root>
   );
 };
-export type PolymorphicComponentProps<
-  C extends ElementType,
-  P extends object
-> = PropsWithChildren<Omit<ComponentPropsWithRef<C>, keyof P> & P>;
-
-export type PolymorphicRef<C extends ElementType> = ComponentPropsWithRef<
-  C
->["ref"];
