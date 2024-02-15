@@ -24,14 +24,14 @@ describe("VALUE", () => {
     );
     expect(asFragment()).toMatchInlineSnapshot(`
       <DocumentFragment>
-        <div
+        <p
           data-idea-value=""
         >
           Hello 
           <em>
             world
           </em>
-        </div>
+        </p>
       </DocumentFragment>
     `);
   });
