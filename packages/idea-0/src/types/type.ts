@@ -17,7 +17,12 @@ export type Formatter<T extends ValueData> = (
 export type PolymorphicComponentProps<
   C extends ElementType,
   P extends object
-> = PropsWithChildren<Omit<ComponentPropsWithoutRef<C>, keyof P> & P>;
+> = Omit<ComponentPropsWithoutRef<C>, keyof P> & P;
+
+export type PolymorphicComponentPropsWithChildren<
+  C extends ElementType,
+  P extends object
+> = PropsWithChildren<PolymorphicComponentProps<C, P>>;
 
 export type PolymorphicRef<C extends ElementType> =
   ComponentPropsWithRef<C>["ref"];
