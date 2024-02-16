@@ -4,24 +4,25 @@ import { Meta } from "@storybook/blocks";
 
 # iDea에서 사용되는 타입을 설명하는 문서입니다.
 
-## ValueData
-
 ```typescript
-type ValueData = string | number | boolean;
-```
+export type ValueData = string | number | boolean;
 
-## EntryData
-
-```typescript
-type EntryData = [string, ValueData];
-```
-
-## Formatter
-
-```typescript
-type Formatter<T extends ValueData> = (
+export type Formatter<T extends ValueData> = (
   value: T,
-  key?: string,
-  index?: number
+  key?: string | number
 ) => ReactNode;
+
+export type PolymorphicComponentProps<
+  C extends ElementType,
+  P extends object
+> = Omit<ComponentPropsWithoutRef<C>, keyof P> & P;
+
+export type PolymorphicComponentPropsWithChildren<
+  C extends ElementType,
+  P extends object
+> = PropsWithChildren<PolymorphicComponentProps<C, P>>;
+
+export type PolymorphicRef<C extends ElementType> =
+  ComponentPropsWithRef<C>["ref"];
+export type EntryData = [string, ValueData];
 ```

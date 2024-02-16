@@ -1,0 +1,15 @@
+import { Meta } from "@storybook/blocks";
+
+<Meta />
+
+# iDea 스토리에서 사용되는 controller를 설명하는 문서입니다.
+
+## Formatter
+
+```typescript
+export const formatter: Record<string, Formatter<ValueData>> = {
+  default: identity,
+  format1: (a, i) => (i === 1 ? `Oh My ${a}` : `My ${a}`),
+  format2: (a) => String(a),
+};
+```

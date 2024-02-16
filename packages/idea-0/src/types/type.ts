@@ -8,10 +8,11 @@ import type {
 
 export type ValueData = string | number | boolean;
 
+export type EntryData = [string, ValueData];
+
 export type Formatter<T extends ValueData> = (
   value: T,
-  key?: string,
-  index?: number
+  key?: string | number
 ) => ReactNode;
 
 export type PolymorphicComponentProps<
@@ -26,4 +27,3 @@ export type PolymorphicComponentPropsWithChildren<
 
 export type PolymorphicRef<C extends ElementType> =
   ComponentPropsWithRef<C>["ref"];
-export type EntryData = [string, ValueData];

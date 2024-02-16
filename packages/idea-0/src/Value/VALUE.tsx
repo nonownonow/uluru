@@ -35,12 +35,6 @@ export const VALUE = forwardRef(function VALUE<
     children,
     ...restProps
   } = props;
-  return (
-    <Value
-      data-idea-value=""
-      {...html(children || $valueFormat($value))}
-      {...restProps}
-      ref={ref}
-    />
-  );
+  const value = children || $valueFormat($value);
+  return <Value data-idea-value="" {...html(value)} {...restProps} ref={ref} />;
 });
