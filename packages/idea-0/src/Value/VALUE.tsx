@@ -29,12 +29,13 @@ export const VALUE = forwardRef(function VALUE<
     Value = "div",
     $value,
     $valueFormat = identity,
+    children,
     ...restProps
   } = props;
   return (
     <Value
       data-idea-value=""
-      {...html($valueFormat($value))}
+      {...html(children || $valueFormat($value))}
       {...restProps}
       ref={ref}
     />

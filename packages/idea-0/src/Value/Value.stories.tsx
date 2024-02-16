@@ -37,9 +37,17 @@ export const Polymorphic: Story = {
   },
 };
 
-export const WithLabel: Story = {
+export const WithValueFormat: Story = {
   args: {
     $value: "Hello <em>world</em>",
+    $valueFormat: (a) => `My ${a}`,
+  },
+};
+
+export const WithChildren: Story = {
+  args: {
+    $value: "Hello <em>world</em>",
+    children: "HELLO <em>WORLD</em>",
     $valueFormat: (a) => `My ${a}`,
   },
 };
